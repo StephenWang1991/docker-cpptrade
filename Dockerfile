@@ -22,4 +22,4 @@ RUN mkdir -p /etc/cpptrde/ \
     && chmod +x /start
 
 EXPOSE 7979
-ENTRYPOINT ["/start"]
+CMD ["/start"]
