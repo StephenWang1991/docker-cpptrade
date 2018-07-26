@@ -17,5 +17,5 @@ RUN set -o errexit -o nounset \
     && chmod +x /start 
 
 EXPOSE 7979
-ENTRYPOINT ["/start"]
+CMD  ["/start"]
  
