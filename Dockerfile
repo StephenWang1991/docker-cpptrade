@@ -13,7 +13,8 @@ RUN set -o errexit -o nounset \
     && ./autogen.sh && ./configure && make && make install \
     && mkdir -p /etc/cpptrde \
     && cp test-config-obsrv.json /etc/cpptrde/config-obsrv.json \
-    && chmod +x /start
+    && chmod +x /start \
+    && rm -rf /tmp/cpptrade-master
 EXPOSE 7979
 ENTRYPOINT ["/start"]
-    
+ 
