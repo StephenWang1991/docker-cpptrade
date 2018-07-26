@@ -5,6 +5,7 @@ RUN set -o errexit -o nounset \
     && apt-get update \
     && apt-get install -y --no-install-recommends autoconf automake make gcc unzip wget g++\
     && apt-get install -y --no-install-recommends libtool libevent-dev libssl-dev uuid-dev libevhtp-dev librocksdb-dev libunivalue-dev\
+    && apt-get install -y --no-install-recommends net-tools nodejs gdb vim\
     && rm -rf /var/lib/apt/lists \
     \
     && echo "Install cpptrade" \
@@ -13,8 +14,8 @@ RUN set -o errexit -o nounset \
     && ./autogen.sh && ./configure && make && make install \
     && mkdir -p /etc/cpptrde \
     && cp test-config-obsrv.json /etc/cpptrde/config-obsrv.json \
-    && chmod +x /start \
-    && rm -rf /tmp/cpptrade-master
+    && chmod +x /start 
+
 EXPOSE 7979
 ENTRYPOINT ["/start"]
  
