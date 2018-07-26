@@ -14,11 +14,11 @@ RUN set -o errexit -o nounset \
 
 
 FROM ubuntu:18.04
-COPY builder:/tmp/cpptrade-master/obdb /usr/local/sbin/obdb
-COPY builder:/tmp/cpptrade-master/obsrv /usr/local/sbin/obsrv
-COPY builder:/tmp/cpptrade-master/test-config-obsrv.json /etc/cpptrde/config-obsrv.json 
+COPY --from=builder /tmp/cpptrade-master/obdb /tmp/cpptrade-master/obsrv /usr/local/sbin/
 ADD start.sh /start
-RUN  chmod +x /start
+RUN mkdir -p /etc/cpptrde/ \
+    && echo "{}" > /etc/cpptrde/config-obsrv.json \
+    && chmod +x /start
 
 EXPOSE 7979
 ENTRYPOINT ["/start"]
